@@ -12,17 +12,17 @@ const image = require('./controllers/image');
 const db = knex({
   client: 'pg',
   connection: {
-    host: '127.0.0.1',
+    host: process.env.POSTGRES_HOST,
     port: 5432, //database port
-    user: 'YOUR_USER',
-    password: 'PASSWORD',
-    database: 'DB_NAME'
+    user: process.env.POSTGRES_USER,
+    password: process.env.POSTGRES_PASSWORD,
+    database: process.env.POSTGRES_DB
   }
 });
 
 const app = express();
 
-console.log('tst')
+console.log(process.env.POSTGRES_PASSWORD);
 
 app.use(express.json());
 app.use(cors());
@@ -36,6 +36,6 @@ app.put('/image', (req, res) => { image.handleImage(req, res, db) });
 app.post('/imageurl', (req, res) => { image.handleApiCall(req, res) });
 
 
-app.listen(process.env.PORT || 3000, () => {
-	console.log(`running on port ${process.env.PORT} or 3000`);
+app.listen(3000, () => {
+	console.log(`running on port 3000`);
 })

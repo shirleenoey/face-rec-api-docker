@@ -1,13 +1,29 @@
 version: 2.17.2
 
 services: 
+
+# BACKEND API
   face-rec-api-docker: 
     container_name: backend
-    # image: node:18-alpine
     build: ./
     command: npm start
     working_dir: /usr/src/face-rec-api-docker
+    environment:
+      POSTGRES_URI: postgres://sally:secret@postgres:5432/face-rec-docker
+    links:
+      - postgres
     ports: 
       - "3000:3000"
     volumes: 
       - ./:/usr/src/face-rec-api-docker
+
+# POSTGRES
+  postgres:
+    environment:
+      POSTGRES_USER: sally
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: face-rec-docker
+      POSTGRES_HOST: postgres
+    image: postgres
+    ports:
+      - "5432:5432"

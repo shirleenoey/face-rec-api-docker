@@ -22,8 +22,6 @@ const db = knex({
 
 const app = express();
 
-console.log(process.env.POSTGRES_PASSWORD);
-
 app.use(express.json());
 app.use(cors());
 app.use(morgan('combined'));

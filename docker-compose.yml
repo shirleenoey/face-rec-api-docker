@@ -9,9 +9,12 @@ services:
     command: npm start
     working_dir: /usr/src/face-rec-api-docker
     environment:
-      POSTGRES_URI: postgres://sally:secret@postgres:5432/face-rec-docker
-    links:
-      - postgres
+      POSTGRES_USER: sally
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: face-rec-docker
+      POSTGRES_HOST: postgres
+    # links:
+    #   - postgres
     ports: 
       - "3000:3000"
     volumes: 
@@ -24,6 +27,6 @@ services:
       POSTGRES_PASSWORD: secret
       POSTGRES_DB: face-rec-docker
       POSTGRES_HOST: postgres
-    image: postgres
+    build: ./postgres
     ports:
       - "5432:5432"

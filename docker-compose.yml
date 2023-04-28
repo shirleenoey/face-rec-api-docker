@@ -9,5 +9,5 @@ services:
     working_dir: /usr/src/face-rec-api-docker
     ports:
       - "3000:3000"
-    volumes: 
+    volumes:
       - ./:/usr/src/face-rec-api-docker

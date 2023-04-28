@@ -24,11 +24,11 @@ const db = knex({
 
 const app = express();
 
+console.log('tst')
+
 app.use(express.json());
 app.use(cors());
 app.use(morgan('combined'));
-
-console.log('test');
 
 app.get('/', (req, res) => res.send('server is live'));
 app.post('/signin', signin.handleSignin(db, bcrypt));

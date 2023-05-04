@@ -13,9 +13,10 @@ services:
       POSTGRES_PASSWORD: secret
       POSTGRES_DB: face-rec-docker
       POSTGRES_HOST: postgres
-    links:
-      - postgres
-      - redis
+      REDIS_URI: redis://redis:6379
+    # links:
+    #   - postgres
+    #   - redis // UPDATE: don't use links
     ports: 
       - "3000:3000"
     volumes: 

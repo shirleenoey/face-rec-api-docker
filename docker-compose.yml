@@ -14,9 +14,6 @@ services:
       POSTGRES_DB: face-rec-docker
       POSTGRES_HOST: postgres
       REDIS_URI: redis://redis:6379
-    # links:
-    #   - postgres
-    #   - redis // UPDATE: don't use links
     ports: 
       - "3000:3000"
     volumes: 

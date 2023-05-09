@@ -1,1 +1,1 @@
-# face-rec-api-docker
+# face-rec-api-docker. This version is dockerized
